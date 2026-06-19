@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nhà hàng Golden Spoon - Điểm đến ẩm thực sang trọng bậc nhất. Trải nghiệm menu trực tuyến phong phú, đặt bàn nhanh chóng với sơ đồ 20 bàn trực quan và hệ thống quản trị chuyên nghiệp.">
+    <title>Golden Spoon - Nhà Hàng Fine Dining Đẳng Cấp</title>
+    <!-- Stylesheet connection -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <div class="navbar-container">
+            <a href="#" class="logo" onclick="app.switchView('home'); return false;" id="nav-logo">
+                <i class="bx bx-restaurant logo-icon"></i>
+                <span class="logo-text">Golden Spoon</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active" data-view="home" id="link-home"><i class="bx bx-home-alt"></i> Trang Chủ</a></li>
+                    <li><a href="#menu" class="nav-link" data-view="menu" id="link-menu"><i class="bx bx-book-open"></i> Thực Đơn</a></li>
+                    <li><a href="#booking" class="nav-link" data-view="booking" id="link-booking"><i class="bx bx-calendar"></i> Đặt Bàn</a></li>
+                    <li><a href="#admin" class="nav-link" data-view="admin" id="link-admin" style="display: none;"><i class="bx bx-shield-quarter"></i> Quản Trị</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Auth Header Component -->
+            <div class="auth-nav">
+                <div id="auth-buttons">
+                    <button class="btn btn-sm btn-gold-outline" onclick="app.openModal(app.loginModal);" id="btn-login-header">Đăng Nhập</button>
+                    <button class="btn btn-sm btn-gold" onclick="app.openModal(app.registerModal);" id="btn-register-header">Đăng Ký</button>
+                </div>
+                <div id="user-profile-header" class="user-profile" style="display: none;">
+                    <div class="user-avatar" id="header-avatar-icon">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <span id="display-user-name" class="text-gold">Tên Khách</span>
+                    <button class="btn btn-sm btn-gold-outline" id="btn-logout"><i class="bx bx-log-out"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SPA VIEW: HOME / ABOUT / REVIEWS -->
+    <main>
+        <section id="view-home" class="view-section active">
+            <!-- Hero banner section -->
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Tinh hoa ẩm thực Fine Dining</span>
+                    <h1 class="hero-title">Trải nghiệm bữa ăn <br><span class="text-gold">Xứng tầm hoàng gia</span></h1>
+                    <p class="hero-desc">Chào mừng bạn đến với Golden Spoon, nơi hội tụ nghệ thuật chế biến ẩm thực đỉnh cao và không gian thưởng tiệc cổ điển, kiến tạo những khoảnh khắc gắn kết khó quên.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-gold" onclick="app.switchView('booking');" id="hero-btn-booking"><i class="bx bx-calendar-plus"></i> Đặt Bàn Trước</button>
+                        <button class="btn btn-gold-outline" onclick="app.switchView('menu');" id="hero-btn-menu"><i class="bx bx-food-menu"></i> Xem Menu</button>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="assets/images/steak.png" alt="Sườn Bò Wagyu Dát Vàng Nướng Đá" class="hero-img" id="hero-featured-image">
+                </div>
+            </div>
+
+            <!-- About Section / Introduction -->
+            <div class="about-intro-grid">
+                <div>
+                    <span class="text-gold font-italic">Câu chuyện của chúng tôi</span>
+                    <h2 class="mb-3" style="font-size: 2.2rem; margin-top: 5px;">Hành trình kiến tạo Golden Spoon</h2>
+                    <p class="text-muted mb-3" style="font-size: 0.95rem;">Được thành lập từ niềm đam mê ẩm thực cháy bỏng, Golden Spoon tự hào mang đến những món ăn không chỉ làm say đắm vị giác mà còn là một tác phẩm nghệ thuật thị giác xuất sắc.</p>
+                    <p class="text-muted mb-3" style="font-size: 0.95rem;">Chúng tôi khắt khe tuyển chọn nguồn nguyên liệu hữu cơ tươi ngon nhất thế giới: bò Wagyu hạng A5 nhập khẩu nguyên khối từ Nhật Bản, nấm Truffle đen quý hiếm từ vùng ôn đới châu Âu và các loại thủy hải sản cao cấp được vận chuyển bằng đường hàng không trong ngày.</p>
+                    <div style="display: flex; gap: 40px; margin-top: 30px;">
+                        <div>
+                            <h3 class="text-gold" style="font-size: 2.5rem; font-weight: 700;">20</h3>
+                            <p class="text-muted" style="font-size: 0.85rem;">Bàn tiệc sang trọng</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gold" style="font-size: 2.5rem; font-weight: 700;">12+</h3>
+                            <p class="text-muted" style="font-size: 0.85rem;">Đầu bếp Michelin</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gold" style="font-size: 2.5rem; font-weight: 700;">5/5</h3>
+                            <p class="text-muted" style="font-size: 0.85rem;">Đánh giá hài lòng</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-features">
+                    <div class="feature-box">
+                        <i class="bx bx-crown"></i>
+                        <h4>Không gian thượng lưu</h4>
+                        <p>Kiến trúc Châu Âu cổ điển, lãng mạn kết hợp âm nhạc thính phòng nhẹ nhàng.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i class="bx bx-wine"></i>
+                        <h4>Ẩm thực đỉnh cao</h4>
+                        <p>Thực đơn tinh hoa hội tụ từ các nền ẩm thực nổi tiếng Pháp, Ý và Nhật Bản.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i class="bx bx-medal"></i>
+                        <h4>Đầu bếp chuẩn sao</h4>
+                        <p>Đội ngũ chuyên gia ẩm thực giàu kinh nghiệm trực tiếp đứng bếp chế biến.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i class="bx bx-heart"></i>
+                        <h4>Dịch vụ tận tâm</h4>
+                        <p>Quy trình phục vụ chuẩn Fine Dining 5 sao, chu đáo tới từng chi tiết nhỏ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews (Đánh giá khách hàng) -->
+            <div class="reviews-section" id="section-reviews-list">
+                <div class="section-title">
+                    <h2>Đánh Giá Từ Thực Khách</h2>
+                    <p>Những cảm nhận chân thực nhất từ khách hàng đã trải nghiệm</p>
+                </div>
+                
+                <!-- Reviews Cards List Grid (App JS renders here) -->
+                <div class="reviews-grid" id="reviews-list-container"></div>
+                
+                <!-- Write review box (Changes dynamically based on eligibility) -->
+                <div class="reviews-action-box" id="review-action-container"></div>
+            </div>
+        </section>
+
+        <!-- SPA VIEW: ONLINE MENU -->
+        <section id="view-menu" class="view-section">
+            <div class="section-title">
+                <h2>Thực Đơn Trực Tuyến</h2>
+                <p>Khám phá bộ sưu tập ẩm thực tinh hoa của chúng tôi</p>
+            </div>
+
+            <div class="menu-controls">
+                <div class="menu-categories" id="menu-categories-list">
+                    <button class="menu-category-btn active" data-category="all" id="btn-cat-all">Tất cả</button>
+                    <button class="menu-category-btn" data-category="appetizer" id="btn-cat-appetizer">Món Khai Vị</button>
+                    <button class="menu-category-btn" data-category="main" id="btn-cat-main">Món Chính</button>
+                    <button class="menu-category-btn" data-category="dessert" id="btn-cat-dessert">Món Tráng Miệng</button>
+                    <button class="menu-category-btn" data-category="drink" id="btn-cat-drink">Đồ Uống</button>
+                </div>
+                <div class="search-bar-wrapper">
+                    <input type="text" placeholder="Tìm kiếm món ăn..." id="menu-search">
+                    <i class="bx bx-search"></i>
+                </div>
+            </div>
+
+            <!-- Grid of dishes (App JS renders here) -->
+            <div class="menu-grid" id="menu-items-grid"></div>
+        </section>
+
+        <!-- SPA VIEW: TABLE BOOKING -->
+        <section id="view-booking" class="view-section">
+            <div class="section-title">
+                <h2>Đặt Bàn Trước</h2>
+                <p>Chọn không gian và vị trí hoàn hảo cho bữa tiệc của bạn</p>
+            </div>
+
+            <!-- Warning block when all 20 tables are booked -->
+            <div class="alert-warning" id="booking-warning" style="display: none;">
+                <i class="bx bx-error"></i> <span></span>
+            </div>
+
+            <div class="booking-container">
+                <!-- Seating layout and instructions -->
+                <div class="booking-panel-left">
+                    <div class="map-card">
+                        <div class="map-card-header">
+                            <h3 style="font-size: 1.25rem;">Sơ Đồ Bàn Tiệc (Tối đa 20 Bàn)</h3>
+                            <div class="table-legend">
+                                <div class="legend-item"><span class="legend-color available"></span><span>Trống</span></div>
+                                <div class="legend-item"><span class="legend-color selected"></span><span>Đang chọn</span></div>
+                                <div class="legend-item"><span class="legend-color booked"></span><span>Đã đặt</span></div>
+                            </div>
+                        </div>
+                        
+                        <p id="occupancy-info" class="text-muted" style="font-size: 0.9rem; margin-bottom: 10px;">Bàn trống: 20/20 bàn</p>
+                        
+                        <!-- Table boxes grid (Interactive seating chart) -->
+                        <div class="table-map-grid" id="table-map"></div>
+                    </div>
+                </div>
+
+                <!-- Booking info and client details -->
+                <div class="booking-panel-right">
+                    <form id="form-booking" class="booking-form-wrapper">
+                        <h3 style="font-size: 1.4rem; border-bottom: 1px solid rgba(205,164,94,0.1); padding-bottom: 10px;" class="text-gold">Thông Tin Đặt Bàn</h3>
+
+                        <div class="form-group-grid">
+                            <div class="form-group">
+                                <label for="booking-date">Ngày đến *</label>
+                                <input type="date" id="booking-date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-timeslot">Khung giờ đặt *</label>
+                                <select id="booking-timeslot" class="form-control" required>
+                                    <option value="lunch">Trưa (11:30 - 14:00)</option>
+                                    <option value="afternoon">Chiều (14:00 - 17:00)</option>
+                                    <option value="dinner" selected>Tối (17:30 - 20:00)</option>
+                                    <option value="latenight">Đêm muộn (20:00 - 22:30)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-guests">Số lượng thực khách *</label>
+                            <select id="booking-guests" class="form-control">
+                                <option value="1">1 Khách</option>
+                                <option value="2" selected>2 Khách</option>
+                                <option value="3">3 Khách</option>
+                                <option value="4">4 Khách</option>
+                                <option value="6">6 Khách (Bàn lớn)</option>
+                                <option value="8">8 Khách (Bàn tiệc)</option>
+                            </select>
+                        </div>
+
+                        <!-- Badge informing about selected table -->
+                        <div class="selected-table-badge" id="selected-table-info">
+                            Vui lòng chọn 1 bàn trong sơ đồ 20 bàn phía bên trái.
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-cust-name">Họ và tên người nhận bàn *</label>
+                            <input type="text" id="booking-cust-name" name="custName" class="form-control" placeholder="Nhập họ và tên..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-cust-phone">Số điện thoại liên hệ *</label>
+                            <input type="tel" id="booking-cust-phone" name="custPhone" class="form-control" placeholder="Nhập số điện thoại..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-notes">Yêu cầu đặc biệt (Không bắt buộc)</label>
+                            <textarea id="booking-notes" name="bookingNotes" class="form-control" rows="3" placeholder="Ví dụ: Trang trí sinh nhật, dị ứng thức ăn, bàn gần cửa sổ..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold" id="btn-submit-booking" disabled><i class="bx bx-check-double"></i> Xác Nhận Đặt Bàn Ngay</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPA VIEW: ADMIN PANEL (Booking list and statistics) -->
+        <section id="view-admin" class="view-section">
+            <div class="section-title">
+                <h2>Hệ Thống Quản Trị Đặt Bàn</h2>
+                <p>Xem toàn bộ lịch sử và quản lý trạng thái đặt bàn của thực khách</p>
+            </div>
+
+            <!-- Stats dashboard cards row -->
+            <div class="admin-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bx bx-list-ul"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="stat-total">0</span>
+                        <span class="stat-label">Tổng đơn</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-pending-card">
+                    <div class="stat-icon"><i class="bx bx-time-five"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="stat-pending">0</span>
+                        <span class="stat-label">Chờ duyệt</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-confirmed-card">
+                    <div class="stat-icon"><i class="bx bx-check-circle"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="stat-confirmed">0</span>
+                        <span class="stat-label">Đã duyệt</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-completed-card">
+                    <div class="stat-icon"><i class="bx bx-run"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="stat-completed">0</span>
+                        <span class="stat-label">Đã ăn xong</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-cancelled-card">
+                    <div class="stat-icon"><i class="bx bx-x-circle"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="stat-cancelled">0</span>
+                        <span class="stat-label">Đã hủy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Filters and Search inputs -->
+            <div class="menu-controls">
+                <h3 style="font-size: 1.15rem; color: var(--color-text-white);"><i class="bx bx-filter-alt text-gold"></i> Bộ lọc & Tìm kiếm lịch sử đặt bàn</h3>
+                <div style="display: flex; gap: 15px; width: 100%; max-width: 600px; justify-content: flex-end; flex-wrap: wrap;">
+                    <div class="search-bar-wrapper" style="max-width: 250px;">
+                        <input type="text" placeholder="Tìm theo tên, SĐT, số bàn..." id="admin-search">
+                        <i class="bx bx-search"></i>
+                    </div>
+                    <select id="admin-filter-status" class="form-control" style="max-width: 180px; padding: 8px 12px; border-radius: 30px; background-color: var(--bg-card);">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="pending">Chờ duyệt</option>
+                        <option value="confirmed">Đã xác nhận</option>
+                        <option value="completed">Đã hoàn thành (Đã ăn)</option>
+                        <option value="cancelled">Đã hủy</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- History Bookings Table -->
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Mã Đơn</th>
+                            <th>Khách Hàng</th>
+                            <th>Ngày Ăn</th>
+                            <th>Khung Giờ</th>
+                            <th class="text-center">Số Bàn</th>
+                            <th class="text-center">Số Khách</th>
+                            <th>Trạng Thái</th>
+                            <th>Hành Động Quản Trị</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-bookings-tbody">
+                        <!-- Javascript will dynamically build rows here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <div class="footer-logo">
+            <i class="bx bx-restaurant text-gold" style="font-size: 1.8rem;"></i>
+            <span class="logo-text" style="font-size: 1.3rem;">Golden Spoon</span>
+        </div>
+        <p>Nhà hàng Fine Dining & Đặt bàn trực tuyến đẳng cấp quốc tế.</p>
+        <p style="margin-top: 5px; font-size: 0.8rem;">Địa chỉ: Số 88 Tràng Tiền, Quận Hoàn Kiếm, Hà Nội | Hotline: 1900 8888</p>
+        <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" aria-label="Tripadvisor"><i class="bx bx-trip"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; color: #555;">&copy; 2026 Nhà Hàng Golden Spoon. All rights reserved. Designed for excellence.</p>
+    </footer>
+
+    <!-- MODAL COMPONENT: LOGIN -->
+    <div class="modal" id="login-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Đăng Nhập</h3>
+                <button class="btn-close-modal" id="btn-close-login-modal">&times;</button>
+            </div>
+            <form id="form-login">
+                <div class="form-group mb-3">
+                    <label for="login-username">Tên đăng nhập</label>
+                    <input type="text" id="login-username" name="username" class="form-control" placeholder="Tên đăng nhập hoặc admin..." required autocomplete="username">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="login-password">Mật khẩu</label>
+                    <input type="password" id="login-password" name="password" class="form-control" placeholder="Mật khẩu..." required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 10px;">Đăng Nhập</button>
+            </form>
+            <div class="modal-footer-text">
+                Chưa có tài khoản? <a href="#" onclick="app.closeAllModals(); setTimeout(() => app.openModal(app.registerModal), 300); return false;" class="text-gold">Đăng ký ngay</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL COMPONENT: REGISTER -->
+    <div class="modal" id="register-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Đăng Ký Tài Khoản</h3>
+                <button class="btn-close-modal" id="btn-close-register-modal">&times;</button>
+            </div>
+            <form id="form-register">
+                <div class="form-group mb-3">
+                    <label for="register-name">Họ và tên *</label>
+                    <input type="text" id="register-name" name="regName" class="form-control" placeholder="Họ và tên của bạn..." required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="register-phone">Số điện thoại *</label>
+                    <input type="tel" id="register-phone" name="regPhone" class="form-control" placeholder="Số điện thoại liên lạc..." required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="register-username">Tên đăng nhập tài khoản *</label>
+                    <input type="text" id="register-username" name="regUsername" class="form-control" placeholder="Viết liền không dấu..." required autocomplete="username">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="register-password">Mật khẩu bảo mật *</label>
+                    <input type="password" id="register-password" name="regPassword" class="form-control" placeholder="Nhập mật khẩu..." required autocomplete="new-password">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="register-confirm-password">Xác nhận mật khẩu *</label>
+                    <input type="password" id="register-confirm-password" name="regConfirmPassword" class="form-control" placeholder="Nhập lại mật khẩu..." required autocomplete="new-password">
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 10px;">Tạo Tài Khoản Khách Hàng</button>
+            </form>
+            <div class="modal-footer-text">
+                Đã có tài khoản? <a href="#" onclick="app.closeAllModals(); setTimeout(() => app.openModal(app.loginModal), 300); return false;" class="text-gold">Đăng nhập</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL COMPONENT: CREATE REVIEW -->
+    <div class="modal" id="review-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Đánh Giá Trải Nghiệm</h3>
+                <button class="btn-close-modal" id="btn-close-review-modal">&times;</button>
+            </div>
+            <form id="form-review">
+                <div class="form-group mb-3">
+                    <label for="review-author-name">Tên thực khách</label>
+                    <input type="text" id="review-author-name" class="form-control" disabled>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Đánh giá số sao *</label>
+                    <div class="star-rating-input">
+                        <i class="bx bxs-star active" data-rating="1"></i>
+                        <i class="bx bxs-star active" data-rating="2"></i>
+                        <i class="bx bxs-star active" data-rating="3"></i>
+                        <i class="bx bxs-star active" data-rating="4"></i>
+                        <i class="bx bxs-star active" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="review-rating-value" value="5">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="review-text">Nội dung đánh giá *</label>
+                    <textarea id="review-text" class="form-control" rows="4" placeholder="Cảm nghĩ của bạn về hương vị món ăn, không gian, cách phục vụ của Golden Spoon..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 10px;"><i class="bx bx-send"></i> Gửi Đánh Giá Ngay</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main javascript entry point -->
+    <script src="app.js"></script>
+</body>
+</html>
