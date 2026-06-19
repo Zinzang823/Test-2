@@ -572,8 +572,8 @@ class GoldenSpoonApp {
         this.btnSubmitBooking.disabled = true;
 
         const bookings = this.getBookings();
-        // Filter bookings for this date and time slot (ignore cancelled ones)
-        const activeBookings = bookings.filter(b => b.date === date && b.timeSlot === timeSlot && b.status !== 'cancelled');
+        // Filter bookings for this date and time slot (ignore cancelled and completed ones)
+        const activeBookings = bookings.filter(b => b.date === date && b.timeSlot === timeSlot && b.status !== 'cancelled' && b.status !== 'completed');
         const bookedTableNumbers = activeBookings.map(b => b.tableNum);
 
         // Render 20 tables layout
@@ -650,7 +650,7 @@ class GoldenSpoonApp {
 
         // Double check booking limits
         const bookings = this.getBookings();
-        const activeBookings = bookings.filter(b => b.date === date && b.timeSlot === timeSlot && b.status !== 'cancelled');
+        const activeBookings = bookings.filter(b => b.date === date && b.timeSlot === timeSlot && b.status !== 'cancelled' && b.status !== 'completed');
         if (activeBookings.length >= 20) {
             this.showNotification('Xin lỗi, khung giờ này vừa mới được đặt hết bàn. Vui lòng chọn khung giờ khác!', 'error');
             this.updateTableLayout();
